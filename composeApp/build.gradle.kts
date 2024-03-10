@@ -41,49 +41,21 @@ kotlin {
     sourceSets {
         androidMain {
             dependencies {
-                implementation(project.dependencies.platform(libs.compose.bom))
-                implementation(libs.compose.ui)
-                implementation(libs.compose.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
-                implementation(libs.ktor.client.okhttp)
-                implementation(libs.kotlinx.coroutines.android)
             }
-        }
-        appleMain.dependencies {
-            implementation(libs.ktor.client.darwin)
         }
         val desktopJvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(libs.ktor.client.okhttp)
-                implementation(libs.kotlinx.coroutines.swing)
-            }
-        }
-        jsMain.dependencies {
-            implementation(compose.ui)
-            implementation(libs.ktor.client.js)
-        }
-        val wasmJsMain by getting {
-            dependencies {
-                implementation(compose.ui)
-                implementation(libs.ktor.client.js)
             }
         }
         commonMain.dependencies {
+            implementation(projects.shared)
             implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.components.resources)
-
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-
-            implementation(libs.kotlinx.coroutines.core)
+            implementation(compose.components.uiToolingPreview)
             implementation(libs.kamel)
-            implementation(libs.koin.core)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.koin)
         }
     }
 }
@@ -122,9 +94,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    dependencies {
-        debugImplementation(libs.compose.ui.tooling)
     }
 }
 

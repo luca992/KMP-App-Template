@@ -10,6 +10,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.jetbrains.kmpapp.data.MuseumObject
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
+import com.jetbrains.kmpapp.screens.detail.DetailScreen
 import org.jetbrains.compose.web.dom.*
 
 data object ListScreen : Screen {
@@ -22,7 +23,7 @@ data object ListScreen : Screen {
 
         if (objects.isNotEmpty()) {
             ObjectGrid(objects = objects, onObjectClick = { objectId ->
-//                    navigator.push(DetailScreen(objectId))
+                    navigator.push(DetailScreen(objectId))
             })
         } else {
             EmptyScreenContent()
@@ -36,7 +37,7 @@ private fun ObjectGrid(
     objects: List<MuseumObject>,
     onObjectClick: (Int) -> Unit,
 ) {
-    Div({ classes("grid", "grid-cols-2", "sm:grid-cols-3", "md:grid-cols-3", "lg:grid-cols-5", "gap-4") }) {
+    Div({ classes("p-5","grid", "grid-cols-2", "sm:grid-cols-3", "md:grid-cols-3", "lg:grid-cols-5", "gap-4") }) {
         objects.forEach { obj ->
             ObjectFrame(
                 obj = obj,

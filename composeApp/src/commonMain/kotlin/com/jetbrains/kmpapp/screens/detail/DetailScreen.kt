@@ -30,9 +30,9 @@ import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kmp_app_template.composeapp.generated.resources.*
 import kmp_app_template.composeapp.generated.resources.Res
-import kmp_app_template.composeapp.generated.resources.back
 import kmp_app_template.composeapp.generated.resources.label_artist
 import kmp_app_template.composeapp.generated.resources.label_date
+import kmp_app_template.composeapp.generated.resources.label_medium
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 

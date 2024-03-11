@@ -9,7 +9,6 @@ import stringResource
 @Composable
 fun EmptyScreenContent() {
     Div({ classes("text-center") }) {
-        Text("No data available")
         Text(stringResource(MR.strings.no_data_available))
     }
 }

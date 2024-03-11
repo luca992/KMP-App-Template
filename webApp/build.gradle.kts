@@ -53,23 +53,25 @@ multiplatformResources {
 }
 
 
-//
-//tasks.register<Copy>("copyTailwindConfig") {
-////    dependsOn("kotlinNpmInstall") // ensures that all required dependencies are installed
-////    val jsFolder = project
-////        .buildDir
-////        .resolve("js")
-////        .resolve("packages")
-////        .resolve(rootProject.name) // This is where the JS is and where webpack works
-////    delete(jsFolder.resolve("tailwind.config.js")) // deleting any existing tailwind.config.js file
-////    // Copying tailwind.config.js from root directory to js folder
-////    from(projectDir.resolve("tailwind.config.js"))
-////    into(jsFolder)
-////    delete(jsFolder.resolve("postcss.config.js"))
-////    // Copying tailwind.config.js from root directory to js folder
-////    from(projectDir.resolve("postcss.config.js"))
-////    into(jsFolder)
-//}
-//
-//tasks.getByName("jsBrowserDevelopmentRun").dependsOn("copyTailwindConfig")
-//tasks.getByName("jsBrowserProductionRun").dependsOn("copyTailwindConfig")
+
+tasks.register<Copy>("copyTailwindConfig") {
+    mustRunAfter(":kotlinNpmInstall")
+    val jsFolder = rootProject
+        .layout.buildDirectory.asFile.get()
+        .resolve("js")
+        .resolve("packages")
+        .resolve("${rootProject.name}-${project.name}")
+
+    // deleting any existing tailwind.config.js file
+    delete(jsFolder.resolve("tailwind.config.js"))
+    // Copying tailwind.config.js from root directory to js folder
+    from(projectDir.resolve("tailwind.config.js"))
+    into(jsFolder)
+    delete(jsFolder.resolve("postcss.config.js"))
+    // Copying tailwind.config.js from root directory to js folder
+    from(projectDir.resolve("postcss.config.js"))
+    into(jsFolder)
+}
+
+tasks.getByName("compileKotlinJs").dependsOn("copyTailwindConfig")
+tasks.getByName("compileKotlinJs").dependsOn("copyTailwindConfig")

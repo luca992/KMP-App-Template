@@ -1,12 +1,11 @@
 [versions]
-compose-compiler = "1.5.8"
-compose-plugin = "1.6.0"
 agp = "8.2.2"
 android-minSdk = "24"
 android-compileSdk = "34"
 android-targetSdk = "34"
 androidx-activityCompose = "1.8.2"
 jetpack-compose-bom = "2024.02.02"
+compose-plugin = "1.6.0"
 coroutines = "1.8.0"
 koin = "3.6.0-alpha3"
 kotlin = "1.9.22"
@@ -16,7 +15,6 @@ voyager = "1.1.0-SNAPSHOT"
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "jetpack-compose-bom" }
-compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }

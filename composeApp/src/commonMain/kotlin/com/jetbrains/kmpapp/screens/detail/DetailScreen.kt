@@ -7,7 +7,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -28,11 +28,16 @@ import com.jetbrains.kmpapp.data.MuseumObject
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
-import kmp_app_template.composeapp.generated.resources.*
 import kmp_app_template.composeapp.generated.resources.Res
+import kmp_app_template.composeapp.generated.resources.back
 import kmp_app_template.composeapp.generated.resources.label_artist
+import kmp_app_template.composeapp.generated.resources.label_credits
 import kmp_app_template.composeapp.generated.resources.label_date
+import kmp_app_template.composeapp.generated.resources.label_department
+import kmp_app_template.composeapp.generated.resources.label_dimensions
 import kmp_app_template.composeapp.generated.resources.label_medium
+import kmp_app_template.composeapp.generated.resources.label_repository
+import kmp_app_template.composeapp.generated.resources.label_title
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 
@@ -66,7 +71,7 @@ private fun ObjectDetails(
                 title = {},
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.Default.ArrowBack, stringResource(Res.string.back))
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(Res.string.back))
                     }
                 })
         },

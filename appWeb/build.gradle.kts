@@ -33,7 +33,6 @@ kotlin {
             implementation(compose.runtimeSaveable)
             implementation(libs.moko.resources)
             implementation(libs.koin.compose)
-            implementation(libs.androidx.lifecycle.viewmodel.compose)
             implementation(libs.androidx.navigation.compose)
         }
 

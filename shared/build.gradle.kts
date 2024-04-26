@@ -40,7 +40,7 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             api(libs.koin.core)
-            implementation(libs.androidx.lifecycle.viewmodel.compose)
+            api(libs.androidx.lifecycle.viewmodel.compose)
         }
     }
 }

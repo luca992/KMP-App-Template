@@ -32,3 +32,4 @@ plugins {
 include(":shared")
 include(":composeApp")
 include(":appWeb")
+include(":appWebSsr")

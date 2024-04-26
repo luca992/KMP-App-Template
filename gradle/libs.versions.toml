@@ -7,6 +7,7 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dev-icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
+kilua = { id = "dev.kilua", version.ref = "kilua" }
 
 [versions]
 
@@ -23,8 +24,9 @@ koin = "3.6.0-wasm-alpha2"
 kotlin = "2.0.0-RC1"
 ktor = "3.0.0-wasm2"
 kamel = "0.9.4-wasm"
-voyager = "1.1.0-SNAPSHOT"
+kilua = "0.0.3"
 moko-resources = "0.24.0-beta-1"
+
 
 [libraries]
 
@@ -37,6 +39,8 @@ androidx-navigation-compose = { module = "org.jetbrains.androidx.navigation:navi
 kamel = { module = "media.kamel:kamel-image", version.ref = "kamel" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+kilua = { module = "dev.kilua:kilua", version.ref = "kilua" }
+kilua-tailwindcss = { module = "dev.kilua:kilua-tailwindcss", version.ref = "kilua" }
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
@@ -44,6 +48,4 @@ ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-voyager-navigator = { module = "io.github.luca992.cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
-voyager-koin = { module = "io.github.luca992.cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }

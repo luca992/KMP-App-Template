@@ -49,6 +49,9 @@ kotlin {
                 implementation(projects.shared)
                 implementation(libs.kilua)
                 implementation(libs.kilua.tailwindcss)
+                implementation(libs.kilua.routing)
+                implementation(libs.koin.compose)
+                implementation(libs.androidx.navigation.compose)
             }
         }
         val jsMain by getting {

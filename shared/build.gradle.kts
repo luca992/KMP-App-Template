@@ -40,8 +40,7 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             api(libs.koin.core)
-            api(libs.voyager.navigator)
-            api(libs.voyager.koin)
+            implementation(libs.androidx.lifecycle.viewmodel.compose)
         }
     }
 }

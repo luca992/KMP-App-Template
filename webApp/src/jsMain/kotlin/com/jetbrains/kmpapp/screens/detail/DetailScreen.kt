@@ -3,33 +3,39 @@ package com.jetbrains.kmpapp.screens.detail
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.jetbrains.kmpapp.MR
 import com.jetbrains.kmpapp.data.MuseumObject
+import com.jetbrains.kmpapp.data.MuseumRepository
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
 import org.jetbrains.compose.web.ExperimentalComposeWebSvgApi
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.AttrBuilderContext
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.Img
+import org.jetbrains.compose.web.dom.Nav
+import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.svg.Path
 import org.jetbrains.compose.web.svg.Svg
 import org.jetbrains.compose.web.svg.fill
 import org.jetbrains.compose.web.svg.xmlns
+import org.koin.compose.koinInject
 import org.w3c.dom.svg.SVGElement
 import stringResource
 
-data class DetailScreen(val objectId: Int) : Screen {
-    @Composable
-    override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        val screenModel: DetailScreenModel = getScreenModel()
+@Composable
+fun DetailScreen(
+    navController: NavController,
+    objectId: Int,
+    museumRepository: MuseumRepository = koinInject(),
+) {
+    val viewModel: DetailViewModel = viewModel { DetailViewModel(museumRepository) }
 
-        val obj by screenModel.getObject(objectId).collectAsState(initial = null)
-        obj?.let {
-            ObjectDetails(obj = it, onBackClick = { navigator.pop() })
-        } ?: EmptyScreenContent()
-    }
+    val obj by viewModel.getObject(objectId).collectAsState(initial = null)
+    obj?.let {
+        ObjectDetails(obj = it, onBackClick = { navController.navigateUp() })
+    } ?: EmptyScreenContent()
 }
 
 @OptIn(ExperimentalComposeWebSvgApi::class)

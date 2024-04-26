@@ -4,40 +4,42 @@ package com.jetbrains.kmpapp.screens.list
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.jetbrains.kmpapp.data.MuseumObject
+import com.jetbrains.kmpapp.data.MuseumRepository
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
-import com.jetbrains.kmpapp.screens.detail.DetailScreen
-import org.jetbrains.compose.web.dom.*
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.Img
+import org.jetbrains.compose.web.dom.P
+import org.jetbrains.compose.web.dom.Text
+import org.koin.compose.koinInject
 
-data object ListScreen : Screen {
-    @Composable
-    override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        val screenModel: ListScreenModel = getScreenModel()
+@Composable
+fun ListScreen(
+    navController: NavController,
+    museumRepository: MuseumRepository = koinInject(),
+) {
+    val viewModel: ListViewModel = viewModel { ListViewModel(museumRepository) }
+    val objects by viewModel.objects.collectAsState()
 
-        val objects by screenModel.objects.collectAsState()
-
-        if (objects.isNotEmpty()) {
-            ObjectGrid(objects = objects, onObjectClick = { objectId ->
-                    navigator.push(DetailScreen(objectId))
-            })
-        } else {
-            EmptyScreenContent()
-        }
+    if (objects.isNotEmpty()) {
+        ObjectGrid(objects = objects, onObjectClick = { objectId ->
+            navController.navigate("detail/$objectId")
+        })
+    } else {
+        EmptyScreenContent()
     }
-
 }
+
 
 @Composable
 private fun ObjectGrid(
     objects: List<MuseumObject>,
     onObjectClick: (Int) -> Unit,
 ) {
-    Div({ classes("p-5","grid", "grid-cols-2", "sm:grid-cols-3", "md:grid-cols-3", "lg:grid-cols-5", "gap-4") }) {
+    Div({ classes("p-5", "grid", "grid-cols-2", "sm:grid-cols-3", "md:grid-cols-3", "lg:grid-cols-5", "gap-4") }) {
         objects.forEach { obj ->
             ObjectFrame(
                 obj = obj,

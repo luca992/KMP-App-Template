@@ -12,9 +12,6 @@ kotlin {
                 cssSupport {
                     enabled.set(true)
                 }
-                scssSupport {
-                    enabled.set(true)
-                }
             }
         }
         binaries.executable()
@@ -29,22 +26,22 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.shared)
             implementation(libs.kotlinx.coroutines.core)
-            implementation(compose.runtime)
-            implementation(compose.runtimeSaveable)
             implementation(libs.moko.resources)
             implementation(libs.koin.compose)
             implementation(libs.androidx.navigation.compose)
         }
 
         jsMain {
-            dependsOn(commonMain.get())
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.html.svg)
-                implementation(npm("tailwindcss", "3.4.1"))
-                implementation(npm("postcss", "8.4.8"))
-                implementation(npm("autoprefixer", "10.4.2"))
-                implementation(npm("postcss-loader", "4.3.0")) // required to invoke postcss during bundling
+                implementation(devNpm("tailwindcss", "^3.4.1"))
+                implementation(devNpm("postcss", "^8.4.8"))
+                implementation(devNpm("autoprefixer", "^10.4.2"))
+                implementation(devNpm("postcss-loader", "^4.3.0")) // required to invoke postcss during bundling
+                implementation(devNpm("style-loader", "^4.0.0"))
+                implementation(devNpm("css-loader", "^7.1.1"))
+                implementation(devNpm("@tailwindcss/forms", "^0.5.3"))
             }
         }
     }

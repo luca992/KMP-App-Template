@@ -7,41 +7,49 @@ import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
-import app.softwork.routingcompose.HashRouter
 import com.jetbrains.kmpapp.di.initKoin
 import com.jetbrains.kmpapp.screens.list.ListScreen
 import dev.kilua.Application
 import dev.kilua.compose.root
-import dev.kilua.utils.JsModule
-import dev.kilua.utils.JsNonModule
-import dev.kilua.utils.useModule
+import dev.kilua.html.div
+import dev.kilua.ssr.SsrRouter
 
 
-@JsModule("./css/style.css")
-@JsNonModule
-external object css
+//@JsModule("./css/style.css")
+//@JsNonModule
+//external object css
 
 
 class App : Application() {
 
     init {
-        useModule(css)
+//  custom css disabled because of Kilua plugin bug
+//        useModule(css)
+//        CssRegister.register("css/style.css")
         initKoin()
     }
 
     override fun start() {
         root("root") {
             withViewModelStoreOwner {
-                HashRouter(
+                SsrRouter(
                     initPath = "/"
-                ) {
+                ) { ->
                     route("/") {
                         ListScreen()
                     }
-//        route("detail/{objectId}") { backStackEntry ->
-//            val objectId = backStackEntry.arguments?.getString("objectId")?.toInt()
-//            DetailScreen(navController, objectId!!)
-//        }
+                    route("detail") { ->
+                        int { objectId ->
+                            // DetailScreen(objectId!!)
+                            div { // TODO: replace with DetailScreen
+                                +"Detail Screen for $objectId"
+                            }
+                        }
+//                        noMatch {
+                        //                      }
+                    }
+                    //                noMatch {
+                    //              }
                 }
             }
         }

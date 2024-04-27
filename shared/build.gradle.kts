@@ -27,10 +27,14 @@ kotlin {
         }
         jsMain.dependencies {
             implementation(libs.ktor.client.js)
+            implementation(libs.kilua)
+            implementation(libs.kilua.rest)
         }
         val wasmJsMain by getting {
             dependencies {
                 implementation(libs.ktor.client.js)
+                implementation(libs.kilua)
+                implementation(libs.kilua.rest)
             }
         }
         commonMain.dependencies {

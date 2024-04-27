@@ -9,6 +9,8 @@ interface MuseumApi {
     suspend fun getData(): List<MuseumObject>
 }
 
+expect fun getMuseumApi(client: HttpClient): MuseumApi
+
 class KtorMuseumApi(private val client: HttpClient) : MuseumApi {
     companion object {
         private const val API_URL =

@@ -8,6 +8,7 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dev-icerock-mobile-multiplatform-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 kilua = { id = "dev.kilua", version.ref = "kilua" }
+kilua-rpc = { id = "dev.kilua.rpc", version.ref = "kilua-rpc" }
 
 [versions]
 
@@ -25,6 +26,7 @@ kotlin = "2.0.0-RC1"
 ktor = "3.0.0-wasm2"
 kamel = "0.9.4-wasm"
 kilua = "0.0.3"
+kilua-rpc = "0.0.7"
 moko-resources = "0.24.0-beta-1"
 
 
@@ -41,7 +43,8 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
 kilua = { module = "dev.kilua:kilua", version.ref = "kilua" }
 kilua-tailwindcss = { module = "dev.kilua:kilua-tailwindcss", version.ref = "kilua" }
-kilua-routing = { module = "dev.kilua:kilua-routing", version.ref = "kilua" }
+kilua-ssr = { module = "dev.kilua:kilua-ssr", version.ref = "kilua" }
+kilua-rest = { module = "dev.kilua:kilua-rest", version.ref = "kilua" }
 
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }

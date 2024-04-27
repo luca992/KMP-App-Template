@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.kilua.rpc)
     alias(libs.plugins.kilua)
 }
 
@@ -49,9 +50,9 @@ kotlin {
                 implementation(projects.shared)
                 implementation(libs.kilua)
                 implementation(libs.kilua.tailwindcss)
-                implementation(libs.kilua.routing)
+                implementation(libs.kilua.ssr)
                 implementation(libs.koin.compose)
-                implementation(libs.androidx.navigation.compose)
+//                implementation(libs.androidx.navigation.compose)
             }
         }
         val jsMain by getting {
@@ -64,3 +65,7 @@ kotlin {
         }
     }
 }
+
+//compose.experimental {
+//    web.application {}
+//}

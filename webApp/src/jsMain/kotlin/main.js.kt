@@ -4,6 +4,7 @@ import com.jetbrains.kmpapp.MR
 import com.jetbrains.kmpapp.di.initKoin
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.provider.JsStringProvider
+import kotlinx.js.JsPlainObject
 import org.jetbrains.compose.web.renderComposable
 
 
@@ -18,9 +19,15 @@ fun stringResource(resource: StringResource): String {
     } ?: "stringsLoader is not initialized"
 }
 
+@JsPlainObject
+external interface Foo {
+    val bar: Long
+}
+
 fun main() {
     cssFile
     initKoin()
+    console.log(JSON.stringify(Foo(bar = 42)))
     renderComposable(rootElementId = "root") {
         LaunchedEffect(Unit) {
             stringsLoader = MR.strings.stringsLoader.getOrLoad()

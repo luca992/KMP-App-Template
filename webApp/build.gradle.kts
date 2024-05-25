@@ -40,6 +40,7 @@ kotlin {
             dependencies {
                 implementation(compose.html.core)
                 implementation(compose.html.svg)
+                implementation(libs.bootstrap.compose)
                 implementation(npm("tailwindcss", "3.4.1"))
                 implementation(npm("postcss", "8.4.8"))
                 implementation(npm("autoprefixer", "10.4.2"))
